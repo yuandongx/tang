@@ -10,6 +10,9 @@ import (
 )
 
 type FindOneOptions = options.FindOneOptions
+type FindOptions = options.FindOptions
+type UpdateOptions = options.UpdateOptions
+type DeleteOptions = options.DeleteOptions
 type Collection = mongo.Collection
 type BD = bson.D
 type BM = bson.M
