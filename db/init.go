@@ -55,3 +55,10 @@ func (mc *MongoClient) GetCollection(db, coll string) *Collection {
 	}
 	return nil
 }
+
+func (mc *MongoClient) DropCollection(db, coll string) error {
+	if c := mc.GetCollection(db, coll); c != nil {
+		return c.Drop(context.Background())
+	}
+	return nil
+}
