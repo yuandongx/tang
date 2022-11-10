@@ -16,7 +16,7 @@ type Handler struct {
 
 var mgdb db.MongoClient
 
-func LoadApp() []Handler {
+func LoadApi() []Handler {
 	return []Handler{}
 }
 
