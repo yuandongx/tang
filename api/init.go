@@ -10,14 +10,16 @@ type Context = gin.Context
 type HandlerFunc = gin.HandlerFunc
 type Handler struct {
 	Path    string
-	Handler *HandlerFunc
+	Handler HandlerFunc
 	Method  string
 }
 
 var mgdb db.MongoClient
 
 func LoadApi() []Handler {
-	return []Handler{}
+	return []Handler{
+		{Path: "xueqiu-list", Handler: getXueqiuRank, Method: "get"},
+	}
 }
 
 func init() {
