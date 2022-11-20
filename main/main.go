@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"tang/api"
 
 	"github.com/gin-gonic/gin"
@@ -11,14 +12,15 @@ func SetupApp() {
 	app := gin.New()
 	apiv1 := app.Group("apiV1")
 	for _, h := range handlers {
-		switch h.Method {
-		case "get", "GET", "Get":
+		method := strings.ToLower(h.Method)
+		switch method {
+		case "get":
 			apiv1.GET(h.Path, h.Handler)
-		case "post", "POST", "Post":
+		case "post":
 			apiv1.POST(h.Path, h.Handler)
-		case "delete", "DELETE", "Delete":
+		case "delete":
 			apiv1.DELETE(h.Path, h.Handler)
-		case "patch", "PATCH", "Patch":
+		case "patch":
 			apiv1.PATCH(h.Path, h.Handler)
 		}
 	}
