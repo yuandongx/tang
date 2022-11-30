@@ -1,8 +1,8 @@
 package api
 
 import (
-	"fmt"
 	"tang/api/com"
+	"time"
 )
 
 // func postXxx(c *Context)   {}
@@ -12,16 +12,20 @@ import (
 
 func postStock(c *Context) {
 	var stock com.XStock
+	now := time.Now()
+	filter := BD{{Key: "date_id", Value: now.Format("2006-01-02")}}
 	if err := c.ShouldBindJSON(&stock); err != nil {
 		c.String(504, err.Error())
 		return
 	}
-	err := mgdb.Save("tang", stock.Symbol, stock)
-	if err != nil {
-		c.String(504, err.Error())
-		return
+	rs, er := mgdb.FindOne("tang", stock.Symbol, filter)
+	if er != nil || len(rs) == 0 {
+		err := mgdb.Save("tang", stock.Symbol, stock)
+		if err != nil {
+			c.String(504, err.Error())
+			return
+		}
 	}
-	fmt.Println(stock)
 	c.String(200, "ok")
 }
 

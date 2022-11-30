@@ -48,6 +48,7 @@ type XStock struct {
 	Type                  int     `json:"type"`
 	Volume                float64 `json:"volume"`
 	Volume_ratio          float64 `json:"volume_ratio"`
+	Date_id               string  `josn:"date_id"`
 }
 type data struct {
 	Count int      `json:"count"`
