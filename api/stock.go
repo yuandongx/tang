@@ -9,7 +9,10 @@ import (
 // func deleteXxx(c *Context) {}
 // func patchXxx(c *Context)  {}
 
-// func postStock(c *Context)   {}
+func postStock(c *Context) {
+	c.String(200, "ok")
+}
+
 // func getStock(c *Context)    {}
 // func deleteStock(c *Context) {}
 // func patchStock(c *Context)  {}

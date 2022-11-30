@@ -19,6 +19,7 @@ var mgdb db.MongoClient
 func LoadApi() []Handler {
 	return []Handler{
 		{Path: "xueqiu-list", Handler: getXueqiuRank, Method: "get"},
+		{Path: "mystock", Handler: postStock, Method: "post"},
 	}
 }
 
