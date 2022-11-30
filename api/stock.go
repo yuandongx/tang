@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"tang/api/com"
 )
 
@@ -10,6 +11,16 @@ import (
 // func patchXxx(c *Context)  {}
 
 func postStock(c *Context) {
+	var stock com.XStock
+	if err := c.ShouldBindJSON(stock); err != nil {
+		c.String(504, err.Error())
+		return
+	}
+	err := mgdb.Save("tang", stock.Symbol, stock)
+	if err != nil {
+		c.String(504, err.Error())
+	}
+	fmt.Println(stock)
 	c.String(200, "ok")
 }
 
