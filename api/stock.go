@@ -26,9 +26,12 @@ func postStock(c *Context) {
 		if err != nil {
 			c.String(504, err.Error())
 			return
+		} else {
+			c.String(200, "ok")
 		}
+	} else {
+		c.String(200, "repeated")
 	}
-	c.String(200, "ok")
 }
 
 // func getStock(c *Context)    {}
