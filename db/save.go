@@ -11,12 +11,16 @@ func (mc *MongoClient) SaveM(db, coll string, data BM) error {
 func (mc *MongoClient) Save(db, coll string, data Any) error {
 	if collection := mc.GetCollection(db, coll); collection != nil {
 		collection.InsertOne(context.Background(), data)
+	} else {
+		return MgoError("Can not get `Collection`.", CODE_SAVE)
 	}
-	return MgoError("Can not get `Collection`.", 2)
+	return nil
 }
 func (mc *MongoClient) SaveMany(db, coll string, data []Any) error {
 	if collection := mc.GetCollection(db, coll); collection != nil {
 		collection.InsertOne(context.Background(), data)
+	} else {
+		return MgoError("Can not get `Collection`.", CODE_SAVE)
 	}
-	return MgoError("Can not get `Collection`.", 2)
+	return nil
 }

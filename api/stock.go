@@ -12,13 +12,14 @@ import (
 
 func postStock(c *Context) {
 	var stock com.XStock
-	if err := c.ShouldBindJSON(stock); err != nil {
+	if err := c.ShouldBindJSON(&stock); err != nil {
 		c.String(504, err.Error())
 		return
 	}
 	err := mgdb.Save("tang", stock.Symbol, stock)
 	if err != nil {
 		c.String(504, err.Error())
+		return
 	}
 	fmt.Println(stock)
 	c.String(200, "ok")

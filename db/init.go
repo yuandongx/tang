@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -29,11 +30,18 @@ type MGError struct {
 	int
 }
 
+const (
+	CODE_SAVE = iota
+	CODE_UPDATE
+	CODE_FIND
+	CODE_DELETE
+)
+
 func MgoError(msg string, code int) *MGError {
 	return &MGError{msg, code}
 }
 func (me *MGError) Error() string {
-	return me.string
+	return fmt.Sprintf("Error: %s, Code: %d", me.string, me.int)
 }
 
 func (mc *MongoClient) GetClient(uri string) (*mongo.Client, error) {

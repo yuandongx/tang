@@ -10,7 +10,7 @@ func (mc *MongoClient) FindOne(db, coll string, filter Any, options ...*FindOneO
 		er = coll.FindOne(context.Background(), filter, options...).Decode(rs)
 		return
 	}
-	return nil, MgoError("Can not get collection.", 3)
+	return nil, MgoError("Can not get collection.", CODE_FIND)
 }
 
 func (mc *MongoClient) FindMany(db, coll string, filter Any, opts ...*FindOptions) ([]BM, error) {
@@ -23,5 +23,5 @@ func (mc *MongoClient) FindMany(db, coll string, filter Any, opts ...*FindOption
 			return nil, err
 		}
 	}
-	return nil, MgoError("Can not get collection.", 3)
+	return nil, MgoError("Can not get collection.", CODE_FIND)
 }

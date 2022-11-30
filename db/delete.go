@@ -7,7 +7,7 @@ func (mc *MongoClient) DeleteOne(db, coll string, filter Any, opts ...*DeleteOpt
 		rs, err := c.DeleteOne(context.Background(), filter, opts...)
 		return rs.DeletedCount, err
 	}
-	return 0, MgoError("Can not get `Collection`.", 5)
+	return 0, MgoError("Can not get `Collection`.", CODE_DELETE)
 }
 
 func (mc *MongoClient) DeleteMany(db, coll string, filter Any, opts ...*DeleteOptions) (int64, error) {
@@ -15,5 +15,5 @@ func (mc *MongoClient) DeleteMany(db, coll string, filter Any, opts ...*DeleteOp
 		rs, err := c.DeleteMany(context.Background(), filter, opts...)
 		return rs.DeletedCount, err
 	}
-	return 0, MgoError("Can not get `Collection`.", 5)
+	return 0, MgoError("Can not get `Collection`.", CODE_DELETE)
 }
