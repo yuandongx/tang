@@ -13,13 +13,15 @@ import (
 func postStock(c *Context) {
 	var stock com.XStock
 	now := time.Now()
-	filter := BD{{Key: "date_id", Value: now.Format("2006-01-02")}}
+	dateId := now.Format("2006-01-02")
+	filter := BD{{Key: "date_id", Value: dateId}}
 	if err := c.ShouldBindJSON(&stock); err != nil {
 		c.String(504, err.Error())
 		return
 	}
 	rs, er := mgdb.FindOne("tang", stock.Symbol, filter)
 	if er != nil || len(rs) == 0 {
+		stock.Date_id = dateId
 		err := mgdb.Save("tang", stock.Symbol, stock)
 		if err != nil {
 			c.String(504, err.Error())
