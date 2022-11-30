@@ -6,6 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type BD = db.BD
+type BM = db.BM
+type BE = db.BE
 type Context = gin.Context
 type HandlerFunc = gin.HandlerFunc
 type Handler struct {
