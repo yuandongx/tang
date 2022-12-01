@@ -70,3 +70,13 @@ func (mc *MongoClient) DropCollection(db, coll string) error {
 	}
 	return nil
 }
+
+func (mc *MongoClient) ListCollectionNames(db string, opts ...*options.DatabaseOptions) []string {
+	if c, err := mc.GetClient(mc.Uri); err == nil {
+		names, err := c.Database(db, opts...).ListCollectionNames(context.Background(), BD{})
+		if err == nil {
+			return names
+		}
+	}
+	return []string{}
+}

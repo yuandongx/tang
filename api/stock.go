@@ -48,6 +48,8 @@ func getXueqiuRank(c *Context) {
 	args["market"] = c.DefaultQuery("market", "CN")
 	args["type"] = c.DefaultQuery("type", "sha")
 	if result, ok := com.GetXueqiuRank(args); ok {
+		collectNames := mgdb.ListCollectionNames("tang")
+		result.Data.MyStocks = collectNames
 		c.JSON(200, result)
 	} else {
 		c.String(501, "Error to fetch result from `xueqiu`.")

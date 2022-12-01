@@ -48,11 +48,13 @@ type XStock struct {
 	Type                  int     `json:"type"`
 	Volume                float64 `json:"volume"`
 	Volume_ratio          float64 `json:"volume_ratio"`
-	Date_id               string  `josn:"date_id"`
+	Date_id               string  `json:"date_id"`
+	Is_my_stock           string  `json:"is_my_stock"`
 }
 type data struct {
-	Count int      `json:"count"`
-	List  []XStock `json:"list"`
+	Count    int      `json:"count"`
+	List     []XStock `json:"list"`
+	MyStocks []string `json:"my_stocks"`
 }
 type XQResult struct {
 	Data             data   `json:"data"`
