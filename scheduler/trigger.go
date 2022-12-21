@@ -1,6 +1,7 @@
 package scheduler
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -19,51 +20,42 @@ type WorkTime struct {
 	stop  time.Time
 }
 
+// func getWorkTime(t string) time.Time {
+// 	// 2006-01-02T15:04:05Z07:00
+// 	tm, _ := time.Parse(time.RFC3339, t)
+// 	tm, _ := time.Parse(time.RFC3339, t)
+// 	return tm
+// }
+
+// s: 2006-01-02
+func workTime(s string, flag int) WorkTime {
+	start := fmt.Sprintf("%sT09:25:00Z08:00", s)
+	stop := fmt.Sprintf("%sT11:30:00Z08:00", s)
+	if flag == 1 {
+		start = fmt.Sprintf("%sT13:00:00Z08:00", s)
+		stop = fmt.Sprintf("%sT15:00:00Z08:00", s)
+	}
+	s1, e1 := time.Parse(time.RFC3339, start)
+	s2, e2 := time.Parse(time.RFC3339, stop)
+	w := WorkTime{}
+	if e1 == nil {
+		w.start = s1
+	}
+	if e2 == nil {
+		w.start = s2
+	}
+	return w
+}
+
 type Trigger struct {
-	StartTime   time.Time
-	StopTime    time.Time
+	Morning     WorkTime
+	Afternoon   WorkTime
 	Deviation   time.Duration //时间偏差
 	LastRunTime time.Time
 	NextRuntime time.Time
 	Interval    time.Duration
 	SkippedDays []int // 那些天跳过
 	JustWorkDay bool
-}
-
-// 获取下次执行时间
-func (c *Trigger) GetNextRunTime() time.Time {
-	if c.Expired() {
-		return TIMEZERO
-	}
-	if c.Pending() {
-		return c.StartTime
-	}
-	now := time.Now()
-
-	// 跳过那些天
-	s := len(c.SkippedDays) == 0 || !IntContain(c.SkippedDays, now.Day())
-
-	return TIMEZERO
-}
-
-// 任务是否在有效期内
-func (t *Trigger) Ongoing() bool {
-	now := time.Now()
-	// 0 < now 所以当前时间必须在start time 之后
-	// 如果结束时间不为 0 则结束时间应在当前时间之后
-	return t.StartTime.Before(now) && (t.StopTime.IsZero() || t.StopTime.After(now))
-}
-
-// 任务等待中
-func (t *Trigger) Pending() bool {
-	now := time.Now()
-	return t.StartTime.IsZero() && now.Before(t.StartTime)
-}
-
-// 过期的
-func (t *Trigger) Expired() bool {
-	now := time.Now()
-	return t.StopTime.IsZero() && now.After(t.StopTime)
 }
 
 func NewTrigger() *Trigger {
