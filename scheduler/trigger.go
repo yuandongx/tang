@@ -44,12 +44,12 @@ func getWorkTime(flag int) WorkTime {
 	// 2006-01-02T15:04:05Z07:00
 	now := time.Now()
 
-	start := fmt.Sprintf("%d-%d-%dT09:25:00Z08:00", now.Year(), now.Month(), now.Day())
-	stop := fmt.Sprintf("%d-%d-%dT11:30:00Z08:00", now.Year(), now.Month(), now.Day())
+	start := fmt.Sprintf("%d-%d-%dT09:25:00+08:00", now.Year(), now.Month(), now.Day())
+	stop := fmt.Sprintf("%d-%d-%dT11:30:00+08:00", now.Year(), now.Month(), now.Day())
 
 	if flag == 1 {
-		start = fmt.Sprintf("%d-%d-%dT13:00:00Z08:00", now.Year(), now.Month(), now.Day())
-		stop = fmt.Sprintf("%d-%d-%dT15:00:00Z08:00", now.Year(), now.Month(), now.Day())
+		start = fmt.Sprintf("%d-%d-%dT13:00:00+08:00", now.Year(), now.Month(), now.Day())
+		stop = fmt.Sprintf("%d-%d-%dT15:00:00+08:00", now.Year(), now.Month(), now.Day())
 	}
 
 	tm1, err1 := time.Parse(time.RFC3339, start)
