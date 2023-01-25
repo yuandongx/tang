@@ -94,6 +94,25 @@ func NewTrigger() *Trigger {
 	return &Trigger{}
 }
 
+// 时间到了该执行任务了？
+func (t *Trigger) TimeIsUp() bool {
+	now := time.Now()
+	sub := t.NextRuntime.Sub(now)
+	return sub <= t.Deviation
+}
+
+// 某次任务完成后 进行时间状态更新
+func (t *Trigger) Finished() {
+	t.LastRunTime = t.NextRuntime
+	t.NextRuntime = t.NextRuntime.Add(t.Interval)
+}
+
+// 计算下次执行时间
+// 若下次执行时间 已经计算过 则不重复计算
+// 否则
+//
+//	计算：如果没有上次执行时间 则以当前时间为起点计算下次执行时间
+//		 否则 根据上次执行时间来算下次下次执行时间 来计算，直到下次执行时间还没有到来
 func (t *Trigger) NextRunTime() time.Time {
 	now := time.Now()
 	if t.NextRuntime.After(now) {
