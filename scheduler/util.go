@@ -9,3 +9,8 @@ func TimeLoaction() *time.Location {
 	beijing := time.FixedZone("Beijing Time", secondsEastOfUTC)
 	return beijing
 }
+
+func wait(seconds int64) {
+	d := time.Second * time.Duration(seconds)
+	time.Sleep(d)
+}
