@@ -13,8 +13,8 @@ type Scheduler struct {
 type Task struct {
 	Name string
 	Trigger
-	Args    []Any
-	Result  Any
+	Args []Any
+	// Result  Any
 	Handler string
 }
 
