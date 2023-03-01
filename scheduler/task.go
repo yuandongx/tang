@@ -19,7 +19,13 @@ type Task struct {
 }
 
 func NewScheduler() *Scheduler {
-	return &Scheduler{Handlers: make(map[string]Handler), Tasks: sync.Map{}}
+	s := &Scheduler{Handlers: make(map[string]Handler), Tasks: sync.Map{}}
+	s.Handlers["LoadDataFromDB"] = LoadDataFromDB
+	return s
+}
+
+func LoadDataFromDB(args ...Any) Any{
+	return nil
 }
 
 func (scheduler *Scheduler) Run() {

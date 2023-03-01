@@ -1,8 +1,10 @@
 package scheduler
 
-const (
-	RUNNING = iota
-	STOPPING
-	PENDDING
-	STOPED
-)
+
+func Run() {
+	s := NewScheduler()
+	for {
+		s.Run()
+		wait(1)
+	}
+}

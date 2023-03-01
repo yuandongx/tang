@@ -3,6 +3,7 @@ package main
 import (
 	"strings"
 	"tang/api"
+	"tang/scheduler"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,5 +29,6 @@ func SetupApp() {
 }
 
 func main() {
+	go scheduler.Run()
 	SetupApp()
 }
