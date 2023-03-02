@@ -94,6 +94,14 @@ func NewTrigger() *Trigger {
 	return &Trigger{}
 }
 
+func DefaultTrigger() *Trigger{
+	t := NewTrigger()
+	t.Morning = Morning()
+	t.Afternoon = Afternoon()
+	t.Interval = 1*time.Second
+	return t
+}
+
 // 时间到了该执行任务了？
 func (t *Trigger) TimeIsUp() bool {
 	now := time.Now()
@@ -239,31 +247,34 @@ func (t *Trigger) TodayIsVaild() bool {
 	return !flag1 && !flag2
 }
 
-// 更新工作时间
+// UpdateWorkTime 更新工作时间
 func (t *Trigger) UpdateWorkTime() {
 	t.Morning = Morning()
 	t.Afternoon = Afternoon()
 }
 
-// 设置路过时间
+// SetSkips 设置路过时间
 func (t *Trigger) SetSkips(skip []int) {
 	t.SkippedDays = skip
 }
 
-// 设置时间偏差
+// SetDeviation 设置时间偏差
 func (t *Trigger) SetDeviation(td time.Duration) {
 	t.Deviation = td
 }
 
-// 更新时间间隔
+// SetInterval 更新时间间隔
 func (t *Trigger) SetInterval(ti time.Duration) {
 	t.Interval = ti
 }
+
+// ToInt convert to int
 func ToInt(w Any) (int, bool) {
 	v, ok := w.(int)
 	return v, ok
 }
 
+// IntContain 包含int
 func IntContain(array []int, a int) bool {
 	for _, v := range array {
 		if v == a {

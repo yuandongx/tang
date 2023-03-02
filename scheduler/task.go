@@ -3,6 +3,7 @@ package scheduler
 import (
 	"encoding/json"
 	"sync"
+	"time"
 )
 
 type Scheduler struct {
@@ -12,7 +13,7 @@ type Scheduler struct {
 
 type Task struct {
 	Name string
-	Trigger
+	*Trigger
 	Args []Any
 	// Result  Any
 	Handler string
@@ -21,10 +22,25 @@ type Task struct {
 func NewScheduler() *Scheduler {
 	s := &Scheduler{Handlers: make(map[string]Handler), Tasks: sync.Map{}}
 	s.Handlers["LoadDataFromDB"] = LoadDataFromDB
+	trigger := NewTrigger()
+	trigger.Morning = Morning()
+	trigger.Afternoon = Afternoon()
+	trigger.Interval = 30*time.Second
+	trigger.Deviation = 1*time.Second
+	trigger.JustWorkDay = true
+	trigger.Index = "trigger-0"
+	loadData := Task{
+		Name: "load_data_from_db",
+		Trigger: trigger,
+		Handler: "LoadDataFromDB",
+		Args: nil,
+	}
+	s.AddOrUpdate(&loadData)
 	return s
 }
-
+// 从数据库中获取数据信息
 func LoadDataFromDB(args ...Any) Any{
+	print("LoadDataFromDB is loading data from db...")
 	return nil
 }
 
