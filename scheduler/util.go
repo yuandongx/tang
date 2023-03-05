@@ -1,6 +1,9 @@
 package scheduler
 
-import "time"
+import (
+	"time"
+	"fmt"
+)
 
 var TIMEZERO = time.Time{}
 
@@ -12,5 +15,7 @@ func TimeLoaction() *time.Location {
 
 func wait(seconds int64) {
 	d := time.Second * time.Duration(seconds)
-	time.Sleep(d)
+	// time.Sleep(d)
+	fmt.Println(d)
+	time.Sleep(1)
 }

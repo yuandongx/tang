@@ -50,6 +50,7 @@ func (scheduler *Scheduler) Run() {
 		if task, ok := value.(Task); ok {
 			if task.Trigger.TimeIsUp() {
 				if run, ok := scheduler.Handlers[task.Handler]; ok {
+					print("run task " + task.Name + " " + task.Handler)
 					go run(task.Args...)
 				} else {
 					print("==> No task named " + task.Name + "!")
