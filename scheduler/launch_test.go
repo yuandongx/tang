@@ -15,3 +15,7 @@ func TestStart(t *testing.T) {
 	json.Unmarshal(b, &c)
 	fmt.Println("1112111", c)
 }
+
+func TestRun(t *testing.T) {
+	Run()
+}

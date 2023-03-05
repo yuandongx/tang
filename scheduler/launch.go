@@ -1,6 +1,5 @@
 package scheduler
 
-
 func Run() {
 	s := NewScheduler()
 	for {
