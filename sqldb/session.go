@@ -19,7 +19,7 @@ func (s *Session) Exec(query string, args []any) {
 	tx, err := s.db.Begin()
 }
 
-func (s *Session) Query(query string, args []any) {}
+func (s Session) Query(query string, args []any) {}
 
 func (s Session) Save(object any) {
 	model := factory.Parse(object, s._type, s.Schema)
