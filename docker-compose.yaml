@@ -1,31 +1,6 @@
 
 services:
 
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    networks:
-      - database
-    volumes:
-      - "/home/xuyuandong/workspace/mongo:/data/db"
-    ports:
-      - 27017:27017
-
-  mongo-express:
-    image: mongo-express
-    restart: always
-    networks:
-      - database
-    ports:
-      - 9090:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
-
   mysql:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -35,8 +10,8 @@ services:
       MYSQL_DATABASE: mysql
       MYSQL_USER: mysql
       MYSQL_PASSWORD: P@ssw0rd
-    ports:
-      - 3306:3306
+#    ports:
+#      - 3306:3306
     volumes:
       - /home/xuyuandong/workspace/mysql/data:/var/lib/mysql
 
@@ -44,4 +19,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 9000:8080
+      - 9090:8080

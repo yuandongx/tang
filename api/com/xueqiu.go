@@ -85,9 +85,7 @@ func makeCookie(s string) (http.Cookie, bool) {
 			} else if k == "domain" {
 				c.Domain = tmp[1]
 			}
-			// else if k == "expires" {
-			// 	// c.Expires = tmp[1]
-			// }
+
 		}
 	}
 	return c, flag
