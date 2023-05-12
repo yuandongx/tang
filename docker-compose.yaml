@@ -10,8 +10,8 @@ services:
       MYSQL_DATABASE: mysql
       MYSQL_USER: mysql
       MYSQL_PASSWORD: P@ssw0rd
-#    ports:
-#      - 3306:3306
+    ports:
+      - 3306:3306
     volumes:
       - /home/xuyuandong/workspace/mysql/data:/var/lib/mysql
 
