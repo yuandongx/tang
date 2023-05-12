@@ -1,7 +1,7 @@
 package sqldb
 
-type DV struct {
+type D struct {
 	Name  string
 	Value any
-	Type  int
+	Type  string
 }
