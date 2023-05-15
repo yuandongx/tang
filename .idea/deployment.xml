@@ -6,7 +6,7 @@
       <paths name="xuyuandong">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/xuyuandong/workspace/goland" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/xuyuandong/workspace/tang" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

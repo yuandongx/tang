@@ -75,6 +75,7 @@ func CreateNySqlSession(dataSourceName string) *Session {
 	}
 	return s
 }
+
 func (s *Session) Ping() int {
 	err := s.db.Ping()
 	if err == nil {
