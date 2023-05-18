@@ -60,7 +60,7 @@ func decodeRows(rows *sql.Rows) ([]D, error) {
 		logger.Println("Can't get data rows ColumnTypes：rows.ColumnTypes()")
 		return nil, err
 	}
-	data := make([]D, 0)
+	result := make([]D, 0)
 	for rows.Next() {
 		data := scanBuffer(columnTypes)
 		err := rows.Scan(data...)
@@ -74,8 +74,8 @@ func decodeRows(rows *sql.Rows) ([]D, error) {
 				Type:  v.DatabaseTypeName(),
 				Value: rowValues[i],
 			}
-			data = append(data, d)
+			result = append(result, d)
 		}
 	}
-	return data, err
+	return result, err
 }

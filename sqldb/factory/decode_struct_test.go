@@ -34,3 +34,15 @@ func TestDecode(t *testing.T) {
 	}
 	t.Log(b)
 }
+
+func TestCreate(t *testing.T) {
+	type A struct {
+		A int    `type:"INT"`
+		B bool   `type:"BOOL"`
+		C string `type:"TEXT"`
+	}
+	a := A{A: 0, B: true, C: "CCC"}
+	m := Parse(a, "mysql", "")
+	s, _ := m.Create()
+	t.Log(s)
+}
