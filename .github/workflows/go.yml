@@ -22,9 +22,9 @@ jobs:
         image: mysql
         env:
           MYSQL_ROOT_PASSWORD: admin!12345
-          MYSQL_DATABASE: $TANG_DB_USERNAME
-          MYSQL_USER: $TANG_DB_USERNAME
-          MYSQL_PASSWORD: $TANG_DB_PASSWORD
+          MYSQL_DATABASE: "$TANG_DB_USERNAME"
+          MYSQL_USER: "$TANG_DB_USERNAME"
+          MYSQL_PASSWORD: "$TANG_DB_PASSWORD"
         ports:
           - 3306:3306
 
