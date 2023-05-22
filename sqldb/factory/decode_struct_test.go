@@ -57,7 +57,7 @@ func Test_lower(t *testing.T) {
 		want string
 	}{
 		// TODO: Add test cases.
-		{name: "azAZ", args: args{s: "azAZ"}, want: "az_az"},
+		{name: "azAZ", args: args{s: "azAZ"}, want: "az_a_z"},
 		{name: "AdsfSDdfs", args: args{s: "AdsfSDdfs"}, want: "adsf_s_ddfs"},
 	}
 	for _, tt := range tests {
