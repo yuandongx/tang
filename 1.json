@@ -1,0 +1,15 @@
+curl localhost:10087/paiban -d '{
+  "params": {
+  "provCode": "00030017",
+  "modelId": "8343d9e-3b19-47b9-94d4-b374b740303e",
+  "employeeInfoFile": "employee_info_00030017_202303271602197277.txt",
+  "customEmployeeParamsFile": "customEmployee_params_00030017_202303271602193919.txt",
+  "damandParamsFile":  "damand_params_00030017_202303271602199020.txt",
+  "scheduleParamsFile":  "schedule_params_00030017_202303271602173657.txt",
+  "channelCode": "10087",
+  "brnchId":"hlw28",
+  "manualBanFile":""
+  }
+}'
+
+

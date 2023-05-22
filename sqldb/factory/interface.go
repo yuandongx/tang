@@ -15,4 +15,6 @@ type SqlInterface interface {
 	GetById(id string) (string, []any)
 	GetAll() (string, []any)
 	GetOne([]Filter) (string, []any)
+
+	GetName() string
 }
