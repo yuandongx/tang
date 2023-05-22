@@ -1,6 +1,6 @@
 package sqldb
 import (
-	"os",
+	"os"
 	"fmt"
 )
 type _error struct {
