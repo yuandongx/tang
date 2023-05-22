@@ -5,10 +5,7 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-sql-driver/mysql v1.7.1
-<<<<<<< HEAD
-=======
 	github.com/spf13/cobra v1.7.0
->>>>>>> 1735652e931f0a9c739686083cd77fe9beeb4099
 )
 
 require (
