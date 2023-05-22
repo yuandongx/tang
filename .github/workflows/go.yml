@@ -33,4 +33,11 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+      env:
+        TANG_DB_PASSWORD: P@ssw0rd
+        TANG_DB_HOST: mysql
+        TANG_DB_NAME: mysql
+        TANG_DB_USERNAME: mysql
+      
+
         

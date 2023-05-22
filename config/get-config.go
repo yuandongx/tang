@@ -17,10 +17,10 @@ func GetEnv(key string) string {
 }
 
 
-func getEnv(key, _default string) string {
+func getEnv(key string) string {
 	v, ok := os.LookupEnv(key)
 	if ok {
 		return v
 	}
-	return _default
+	return ""
 }
