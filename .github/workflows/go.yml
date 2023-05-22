@@ -21,8 +21,6 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: $TANG_DB_NAME
-          POSTGRES_DB: $TANG_DB_NAME
           POSTGRES_PASSWORD: admin12345
         options: >-
           --health-cmd pg_isready
