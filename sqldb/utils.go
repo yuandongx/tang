@@ -37,7 +37,7 @@ func GetPostGresSource() string {
 	password := config.GetEnv("DB_PASSWORD")
 	port := config.GetEnv("DB_PORT")
 	if port == "" {
-		port = "3306"
+		port = "5432"
 	}
 	return fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=verify-full",
 		username, password, host, port, name)

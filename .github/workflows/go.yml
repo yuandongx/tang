@@ -18,17 +18,17 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: mysql
+      postgres:
+        image: postgres
         env:
-          MYSQL_ROOT_PASSWORD: admin!12345
-          MYSQL_DATABASE: "$TANG_DB_NAME"
-          MYSQL_USER: "$TANG_DB_USERNAME"
-          MYSQL_PASSWORD: "$TANG_DB_PASSWORD"
-        options:
-          --default-authentication-plugin mysql_native_password
+          POSTGRES_PASSWORD: "$TANG_DB_NAME"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         ports:
-          - 3306:3306
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v3
