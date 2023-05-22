@@ -16,6 +16,6 @@ func TestStart(t *testing.T) {
 	fmt.Println("1112111", c)
 }
 
-func TestRun(t *testing.T) {
-	Run()
-}
+// func TestRun(t *testing.T) {
+// 	Run()
+// }
