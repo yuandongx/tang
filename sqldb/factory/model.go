@@ -12,8 +12,9 @@ type Field struct {
 }
 
 type Model struct {
-	Fields []Field `json:""`
-	Name   string
+	Fields     []Field `json:""`
+	Name       string
+	OriginName string
 }
 
 func NewModel(name string) *Model {
