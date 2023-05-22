@@ -8,6 +8,11 @@ on:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+env:
+  TANG_DB_PASSWORD: P@ssw0rd
+  TANG_DB_HOST: mysql
+  TANG_DB_NAME: mysql
+  TANG_DB_USERNAME: mysql
 
 jobs:
   container-job:
@@ -17,9 +22,9 @@ jobs:
         image: mysql
         env:
           MYSQL_ROOT_PASSWORD: admin!12345
-          MYSQL_DATABASE: mysql
-          MYSQL_USER: mysql
-          MYSQL_PASSWORD: P@ssw0rd
+          MYSQL_DATABASE: $TANG_DB_USERNAME
+          MYSQL_USER: $TANG_DB_USERNAME
+          MYSQL_PASSWORD: $TANG_DB_PASSWORD
         ports:
           - 3306:3306
 
@@ -33,11 +38,6 @@ jobs:
 
     - name: Test
       run: go test -v ./...
-      env:
-        TANG_DB_PASSWORD: P@ssw0rd
-        TANG_DB_HOST: mysql
-        TANG_DB_NAME: mysql
-        TANG_DB_USERNAME: mysql
       
 
         

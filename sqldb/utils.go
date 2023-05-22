@@ -22,6 +22,9 @@ func GetDbSource()string {
 	username = config.GetEnv("DB_USERNAME")
 	password = config.GetEnv("DB_PASSWORD")
 	port = config.GetEnv("DB_PORT")
+	if port == "" {
+		port = "3306"
+	}
 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
 	username, password, host, port, name)
 }
