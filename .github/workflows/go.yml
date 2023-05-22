@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "develop" ]
 env:
-  TANG_DB_PASSWORD: P@ssw0rd
+  TANG_DB_PASSWORD: admin!12345
   TANG_DB_HOST: 127.0.0.1
   TANG_DB_NAME: mysql
   TANG_DB_USERNAME: mysql
