@@ -116,3 +116,16 @@ func Captain(a string) (b string) {
 	}
 	return
 }
+
+func lower(s string) string {
+	chs := make([]rune, 0)
+	for i, c := range s {
+		if c >= 'A' && c <= 'Z' {
+			if i != 0 {
+				chs = append(chs, '_')
+			}
+			chs = append(chs, c+32)
+		}
+	}
+	return string(chs)
+}

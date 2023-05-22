@@ -51,7 +51,7 @@ func (m PostgresModel) Create() (string, []any) {
 	if !hasKey {
 		sqlString = "id INT AUTO_INCREMENT PRIMARY KEY, " + sqlString
 	}
-	sql := "CREATE TABLE `" + m.Name + "` (" + sqlString + ") ENGINE='InnoDB';"
+	sql := "CREATE TABLE " + m.Name + " (" + sqlString + ");"
 	return sql, nil
 }
 

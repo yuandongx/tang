@@ -46,3 +46,25 @@ func TestCreate(t *testing.T) {
 	s, _ := m.Create()
 	t.Log(s)
 }
+
+func Test_lower(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		// TODO: Add test cases.
+		{name: "azAZ", args: args{s: "azAZ"}, want: "az_az"},
+		{name: "AdsfSDdfs", args: args{s: "AdsfSDdfs"}, want: "adsf_s_ddfs"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := lower(tt.args.s); got != tt.want {
+				t.Errorf("lower() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
