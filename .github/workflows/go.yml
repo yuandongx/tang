@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "develop" ]
 env:
-  TANG_DB_PASSWORD: admin!12345
+  TANG_DB_PASSWORD: admin12345
   TANG_DB_HOST: localhost
   TANG_DB_NAME: postgres
   TANG_DB_USERNAME: postgres
