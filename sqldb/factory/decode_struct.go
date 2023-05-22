@@ -125,6 +125,8 @@ func lower(s string) string {
 				chs = append(chs, '_')
 			}
 			chs = append(chs, c+32)
+		} else {
+			chs = append(chs, c)
 		}
 	}
 	return string(chs)

@@ -39,7 +39,6 @@ func GetPostGresSource() string {
 	if port == "" {
 		port = "5432"
 	}
-	fmt.Println("====>", password)
 	return fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=disable",
 		username, password, host, port, name)
 }
