@@ -8,7 +8,7 @@ const (
 )
 
 func GetEnv(key string) string {
-	key = strings.Trim()
+	key = strings.Trim(key)
 	key = strings.ToUpper(key)
 	if !strings.HasPrefix(key, APP_PREFIX) {
 		key = APP_PREFIX+key
