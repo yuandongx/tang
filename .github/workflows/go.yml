@@ -10,9 +10,19 @@ on:
     branches: [ "develop" ]
 
 jobs:
-
-  build:
+  container-job:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: admin!12345
+          MYSQL_DATABASE: mysql
+          MYSQL_USER: mysql
+          MYSQL_PASSWORD: P@ssw0rd
+        ports:
+          - 3306:3306
+
     steps:
     - uses: actions/checkout@v3
 
@@ -21,8 +31,6 @@ jobs:
       with:
         go-version: 1.19
 
-    - name: Build
-      run: go build -v ./...
-
     - name: Test
       run: go test -v ./...
+        
