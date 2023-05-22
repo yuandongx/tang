@@ -4,17 +4,15 @@ type SqlInterface interface {
 	Create() (string, []any)
 
 	Add() (string, []any)
-	AddMany() (string, []any)
 
 	Delete() (string, []any)
-	DeleteMany([]Filter) (string, []any)
+	DeleteMore(map[string]any) (string, []any)
 
-	Update() (string, []any)
-	UpdateMay() (string, []any)
+	Update(map[string]any, []string) (string, []any)
 
 	GetById(id string) (string, []any)
 	GetAll() (string, []any)
-	GetOne([]Filter) (string, []any)
+	GetMore(map[string]any) (string, []any)
 
 	GetName() string
 }
