@@ -2,6 +2,7 @@ package sqldb
 
 import (
 	"database/sql"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -30,6 +31,18 @@ func CreateMySqlSession(dataSourceName string) *Session {
 	return s
 }
 
+func CreatePostgresSession(dataSourceName string) *Session {
+	db, err := sql.Open("postgre", dataSourceName)
+	s := &Session{_type: "postgre", db: db}
+	if err != nil {
+		s.status = FAILURE
+		logger.Fatal("postgre连接败：", err)
+	} else {
+		s.Ping()
+	}
+	return s
+}
+
 func (s *Session) Ping() int {
 	err := s.db.Ping()
 	if err == nil {
@@ -37,7 +50,7 @@ func (s *Session) Ping() int {
 		return OK
 	} else {
 		s.status = PingError
-		logger.Println("mysql连接败：", err)
+		logger.Println("sql连接败：", err)
 		return PingError
 	}
 }

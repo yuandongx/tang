@@ -27,6 +27,8 @@ func Parse(object any, _type, schema string) SqlInterface {
 	switch _type {
 	case "mysql":
 		return MysqlModel{Name: m.Name, Model: *m, Schema: schema}
+	case "postgres":
+		return PostgresModel{Name: m.Name, Model: *m, Schema: schema}
 	default:
 		return MysqlModel{Name: m.Name, Model: *m, Schema: schema}
 	}
