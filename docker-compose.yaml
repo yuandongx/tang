@@ -1,18 +1,17 @@
 version: "3.0"
 services:
-  mysql:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+  db:
+    image: postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: admin!12345
-      MYSQL_DATABASE: mysql
-      MYSQL_USER: mysql
-      MYSQL_PASSWORD: P@ssw0rd
+      POSTGRES_PASSWORD: admin!12345
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
-      - /home/xuyuandong/workspace/mysql/data:/var/lib/mysql
+      - /home/xuyuandong/workspace/postgres/data:/var/lib/postgresql/data
 
   adminer:
     image: adminer

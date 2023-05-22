@@ -11,8 +11,8 @@ on:
 env:
   TANG_DB_PASSWORD: admin!12345
   TANG_DB_HOST: localhost
-  TANG_DB_NAME: mysql
-  TANG_DB_USERNAME: mysql
+  TANG_DB_NAME: postgres
+  TANG_DB_USERNAME: postgres
 
 jobs:
   container-job:
@@ -21,7 +21,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: "$TANG_DB_NAME"
+          POSTGRES_USER: $postgres
+          POSTGRES_DB: $TANG_DB_NAME
+          POSTGRES_PASSWORD: $TANG_DB_PASSWORD
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
