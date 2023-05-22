@@ -5,8 +5,8 @@ import (
 )
 
 func TestSession_Query(t *testing.T) {
-
-	s := CreateMySqlSession("mysql:P@ssw0rd@tcp(localhost:3306)/mysql")
+	src := GetDbSource()
+	s := CreateMySqlSession(src)
 	d, e := s.Query("select * from tang_test_123;")
 	t.Log(d)
 	t.Log(e)

@@ -7,16 +7,12 @@ const (
 	PREFIX = "tang_"
 )
 
-var (
-	db_name = "msyql"
-	db_password = "P@ssw0rd"
-	db_host = "106.75.63.248"
-	db_port = 3306
-	db_username = "mysql"
-)
-
 func GetEnv(key string) string {
-	strings.Stsrtwit()
+	key = strings.Trim()
+	key = strings.ToUpper(key)
+	if !strings.HasPrefix(key, APP_PREFIX) {
+		key = APP_PREFIX+key
+	}
 	return getEnv(key)
 }
 
