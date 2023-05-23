@@ -9,7 +9,7 @@ func TestSession_Query(t *testing.T) {
 		A int    `type:"integer"`
 		B string `type:"text"`
 	}
-	src := GetPostGresSource()
+	src := GetPostgresSource()
 	t.Log("database source is : ", src)
 	s := CreatePostgresSession(src)
 	s.Create(TangTest{})

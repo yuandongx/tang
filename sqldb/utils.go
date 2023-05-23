@@ -30,7 +30,7 @@ func GetDbSource() string {
 		username, password, host, port, name)
 }
 
-func GetPostGresSource() string {
+func GetPostgresSource() string {
 	host := config.GetEnv("DB_HOST")
 	name := config.GetEnv("DB_NAME")
 	username := config.GetEnv("DB_USERNAME")

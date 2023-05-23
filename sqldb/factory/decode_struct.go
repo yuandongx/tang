@@ -44,14 +44,13 @@ func decode(object any) (m *Model) {
 	m = NewModel(lower(_type.Name()))
 	m.OriginName = _type.Name()
 	for i := 0; i < _type.NumField(); i++ {
-		fmt.Println(_type.Field(i))
-		fmt.Println(_value.Field(i))
 		tfield := _type.Field(i)
 		vfield := _value.Field(i)
 		f := Field{
 			Key:     tfield.Name,
 			Value:   getValue(vfield),
 			Options: tagToMap(string(tfield.Tag)),
+			Type:    tfield.Type.Name(),
 		}
 		m.AddField(f)
 	}

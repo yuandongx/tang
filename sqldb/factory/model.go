@@ -9,6 +9,7 @@ type Field struct {
 	Key     string
 	Value   any
 	Options map[string]string
+	Type    string
 }
 
 type Model struct {
