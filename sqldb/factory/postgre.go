@@ -49,11 +49,11 @@ func (m PostgresModel) Create() (string, []any) {
 	}
 	sqlString := strings.Join(fs, ", ")
 	if hasKey == "" {
-		sqlString = sqlString + ", id serial, PRIMARY KEY(id) "
+		sqlString = sqlString + ", id serial, PRIMARY KEY(id)"
 	} else {
 		sqlString += ", PRIMARY KEY(" + hasKey + ")"
 	}
-	sql := "CREATE TABLE " + m.Name + " (" + sqlString + ");"
+	sql := "CREATE TABLE " + m.Name + "(" + sqlString + ");"
 	return sql, nil
 }
 
