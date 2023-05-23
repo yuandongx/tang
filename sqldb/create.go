@@ -13,6 +13,10 @@ func (s *Session) Create(object any) (int64, error) {
 	if res, err := s.Exec(_sql); err != nil {
 		fmt.Println(11111111111, res)
 		return -1, error_(fmt.Sprintf("create table(%s) failed.", model.GetName()))
+	} else {
+
+		fmt.Println(2222222222, res)
 	}
+
 	return 0, nil
 }
