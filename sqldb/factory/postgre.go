@@ -13,7 +13,7 @@ type PostgresModel struct {
 
 func (m PostgresModel) Create() (string, []any) {
 	fs := make([]string, 0)
-	hasKey := false
+	hasKey := ""
 	for _, f := range m.Fields {
 		s := f.Key
 		if _type, ok := f.Options["type"]; ok {
@@ -29,8 +29,8 @@ func (m PostgresModel) Create() (string, []any) {
 		}
 
 		if auto, ok := f.Options["auto_increment"]; ok && auto == "true" {
-			s = s + " AUTO_INCREMENT PRIMARY KEY"
-			hasKey = true
+			s = s + " serial"
+			hasKey = f.Key
 		}
 
 		if _default, ok := f.Options["default"]; ok {
@@ -48,8 +48,10 @@ func (m PostgresModel) Create() (string, []any) {
 		fs = append(fs, s)
 	}
 	sqlString := strings.Join(fs, ", ")
-	if !hasKey {
-		sqlString = "id INT AUTO_INCREMENT PRIMARY KEY, " + sqlString
+	if hasKey == "" {
+		sqlString = sqlString + "id serial, PRIMARY KEY(id) "
+	} else {
+		sqlString += ", PRIMARY KEY(" + hasKey + ")"
 	}
 	sql := "CREATE TABLE " + m.Name + " (" + sqlString + ");"
 	return sql, nil
