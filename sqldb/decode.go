@@ -54,13 +54,13 @@ func decodeValue(values []any) []any {
 	}
 	return realValue
 }
-func decodeRows(rows *sql.Rows) ([]D, error) {
+func decodeRows(rows *sql.Rows) ([][]D, error) {
 	columnTypes, err := rows.ColumnTypes()
 	if err != nil {
 		log.Error("Can't get data rows ColumnTypes: rows.ColumnTypes()")
 		return nil, err
 	}
-	result := make([]D, 0)
+	result := make([][]D, 0)
 	for rows.Next() {
 		data := scanBuffer(columnTypes)
 		err := rows.Scan(data...)
@@ -68,14 +68,16 @@ func decodeRows(rows *sql.Rows) ([]D, error) {
 			log.Fatal("Scan values from sql error: ", err)
 		}
 		rowValues := decodeValue(data)
+		tmp := make([]D, 0)
 		for i, v := range columnTypes {
 			d := D{
 				Name:  v.Name(),
 				Type:  v.DatabaseTypeName(),
 				Value: rowValues[i],
 			}
-			result = append(result, d)
+			tmp = append(tmp, d)
 		}
+		result = append(result, tmp)
 	}
 	return result, err
 }

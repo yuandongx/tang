@@ -12,8 +12,18 @@ func TestSession_Query(t *testing.T) {
 	src := GetPostgresSource()
 	t.Log("database source is : ", src)
 	s := CreatePostgresSession(src)
-	s.Create(TangTest{})
+	tt := TangTest{A: 1, B: "B"}
+	s.Create(tt)
+	n, er := s.Save(tt)
+	if n == 1 && er == nil {
+		t.Log("Test Pass!")
+	} else {
+		t.Fatal("Test Failed!")
+	}
 	d, e := s.Query("select * from tang_test;")
-	t.Log(d)
-	t.Log(e)
+	if len(d) > 0 && e == nil {
+		t.Log("Test Pass!")
+	} else {
+		t.Fatal("Test Failed!")
+	}
 }

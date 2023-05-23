@@ -64,9 +64,9 @@ func (m PostgresModel) Add() (string, []any) {
 	for i, v := range m.Fields {
 		values[i] = v.Value
 		fields[i] = v.Key
-		fills[i] = "?"
+		fills[i] = fmt.Sprintf("$%d", i+1)
 	}
-	sql := "INSERT INTO " + m.Name + " (" + strings.Join(fields, ",") + ")values(" + strings.Join(fills, ", ") + ")"
+	sql := "INSERT INTO " + m.Name + "(" + strings.Join(fields, ",") + ")values(" + strings.Join(fills, ", ") + ")"
 	return sql, values
 }
 

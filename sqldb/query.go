@@ -3,7 +3,7 @@ package sqldb
 import "database/sql"
 
 // Query 执行查询
-func (s *Session) Query(query string, args ...any) ([]D, error) {
+func (s *Session) Query(query string, args ...any) ([][]D, error) {
 	if tx, err := s.db.Begin(); err == nil {
 		if stm, err := tx.Prepare(query); err == nil {
 			defer func(stm *sql.Stmt) {
