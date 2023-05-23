@@ -7,8 +7,8 @@ import (
 
 func TestSession_Query(t *testing.T) {
 	type TangTest struct {
-		A int `type:"INT"`
-		B int `type:"TEXT"`
+		A int    `type:"integer"`
+		B string `type:"text"`
 	}
 	src := GetPostGresSource()
 	t.Log("database source is : ", src)
