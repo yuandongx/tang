@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestSession_Query(t *testing.T) {
+func TestSession_CreatePostgresSession(t *testing.T) {
 	type TangTest struct {
 		A int    `type:"integer"`
 		B string `type:"text"`

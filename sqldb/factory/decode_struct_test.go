@@ -4,6 +4,19 @@ import (
 	"testing"
 )
 
+type TangTestCaseInt struct {
+	Aint   int
+	Bint16 int16
+	Cint32 int32
+	Dint8  int8
+	Eint64 int64
+}
+
+type TangTestCaseFloat struct {
+	Afloat32 float32
+	Afloat64 float64
+}
+
 func TestDecode(t *testing.T) {
 	type Bbject struct {
 		A int

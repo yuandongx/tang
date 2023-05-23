@@ -15,11 +15,11 @@ func (m PostgresModel) Create() (string, []any) {
 	fs := make([]string, 0)
 	hasKey := ""
 	for _, f := range m.Fields {
-		s := f.Key
+		s := lower(f.Key)
 		if _type, ok := f.Options["type"]; ok {
 			s = s + " " + _type
 		} else {
-			s = s + " text"
+			s = s + " " + PgType(f.Type)
 		}
 
 		if null, ok := f.Options["null"]; ok && null == "true" {
