@@ -15,7 +15,7 @@ func TestSession_Query(t *testing.T) {
 	s := CreatePostgresSession(src)
 	i, e := s.Create(TangTest{})
 	fmt.Println(i, e)
-	d, e := s.Query("select * from tang_test;")
+	d, e := s.Query("select * from public.tang_test;")
 	t.Log(d)
 	t.Log(e)
 }
