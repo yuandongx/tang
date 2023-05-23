@@ -25,7 +25,7 @@ func CreateMySqlSession(dataSourceName string) *Session {
 	s := &Session{_type: "mysql", db: db}
 	if err != nil {
 		s.status = FAILURE
-		logger.Fatal("mysql连接败：", err)
+		log.Fatal("mysql连接败：", err)
 	} else {
 		s.Ping()
 	}
@@ -37,7 +37,7 @@ func CreatePostgresSession(dataSourceName string) *Session {
 	s := &Session{_type: "postgres", db: db}
 	if err != nil {
 		s.status = FAILURE
-		logger.Fatal("postgre连接败：", err)
+		log.Fatal("postgre连接败：", err)
 	} else {
 		s.Ping()
 	}
@@ -51,7 +51,7 @@ func (s *Session) Ping() int {
 		return OK
 	} else {
 		s.status = PingError
-		logger.Println("sql连接败：", err)
+		log.Error("sql连接败：", err)
 		return PingError
 	}
 }

@@ -1,5 +1,7 @@
 package sqldb
 
-import "log"
+import (
+	"tang/logger"
+)
 
-var logger *log.Logger = log.Default()
+var log = logger.GetLogger("sqldb", logger.DEBUG)
