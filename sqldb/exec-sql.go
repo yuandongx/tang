@@ -9,7 +9,11 @@ func (s *Session) Exec(query string, args ...any) (sql.Result, error) {
 			defer func(stm *sql.Stmt) {
 				_ = stm.Close()
 			}(stm)
-			return stm.Exec(args...)
+			rs, err := stm.Exec(args...)
+			if err == nil {
+				err = tx.Commit()
+			}
+			return rs, err
 		} else {
 			return nil, err
 		}
