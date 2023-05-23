@@ -20,8 +20,9 @@ func TestSession_CreatePostgresSession(t *testing.T) {
 	} else {
 		t.Fatal("Test Failed!")
 	}
-	d, e := s.Query("select * from tang_test;")
+	d, e := s.Query("select * from tang_test_int;")
 	if len(d) > 0 && e == nil {
+		t.Log(d)
 		t.Log("Test Pass!")
 	} else {
 		t.Fatal("Test Failed!")

@@ -8,6 +8,7 @@ import (
 func scanBuffer(columnTypes []*sql.ColumnType) []any {
 	buffer := make([]any, len(columnTypes))
 	for i, t := range columnTypes {
+		log.Debug(t.Name(), t.ScanType().Kind(), t.DatabaseTypeName())
 		switch t.ScanType().Kind() {
 		case reflect.Int:
 			buffer[i] = new(int)

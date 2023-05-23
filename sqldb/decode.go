@@ -1,8 +1,10 @@
 package sqldb
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
-func decodeValue(values []any) []any {
+func decodeValue(values []any, columnTypes []*sql.ColumnType) []any {
 	realValue := make([]any, len(values))
 	for i, v := range values {
 		switch v.(type) {
@@ -37,7 +39,19 @@ func decodeValue(values []any) []any {
 		case *[]uint8:
 			realValue[i] = string(*v.(*[]uint8))
 		case *any:
-			realValue[i] = *v.(*any)
+			switch columnTypes[i].DatabaseTypeName() {
+			case "MONEY", "NUMERIC":
+				value := *v.(*any)
+				if value, ok := value.([]byte); ok {
+					realValue[i] = string(value)
+				} else {
+					realValue[i] = *v.(*any)
+				}
+
+			default:
+				realValue[i] = *v.(*any)
+			}
+
 		case *sql.NullInt64:
 			if i64 := *v.(*sql.NullInt64); i64.Valid {
 				realValue[i] = i64
@@ -67,7 +81,7 @@ func decodeRows(rows *sql.Rows) ([][]D, error) {
 		if err != nil {
 			log.Fatal("Scan values from sql error: ", err)
 		}
-		rowValues := decodeValue(data)
+		rowValues := decodeValue(data, columnTypes)
 		tmp := make([]D, 0)
 		for i, v := range columnTypes {
 			d := D{
