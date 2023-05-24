@@ -6,8 +6,7 @@ import (
 )
 
 type MysqlModel struct {
-	Name   string
-	Schema string
+	Name string
 	Model
 }
 

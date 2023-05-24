@@ -13,7 +13,7 @@ type Field struct {
 }
 
 type Model struct {
-	Fields     []Field `json:""`
+	Fields     []Field
 	Name       string
 	OriginName string
 }

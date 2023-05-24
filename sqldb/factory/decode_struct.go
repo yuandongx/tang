@@ -26,11 +26,12 @@ func Parse(object any, _type, schema string) SqlInterface {
 	m := decode(object)
 	switch _type {
 	case "mysql":
-		return MysqlModel{Name: m.Name, Model: *m, Schema: schema}
+		return MysqlModel{Name: m.Name, Model: *m}
 	case "postgres":
-		return PostgresModel{Name: m.Name, Model: *m, Schema: schema}
+		name := fmt.Sprintf("%s.%s", schema, m.Name)
+		return PostgresModel{Name: name, Model: *m}
 	default:
-		return MysqlModel{Name: m.Name, Model: *m, Schema: schema}
+		return MysqlModel{Name: m.Name, Model: *m}
 	}
 }
 

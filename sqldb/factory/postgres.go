@@ -6,8 +6,7 @@ import (
 )
 
 type PostgresModel struct {
-	Name   string
-	Schema string
+	Name string
 	Model
 }
 
