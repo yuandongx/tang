@@ -28,6 +28,9 @@ func Parse(object any, _type, schema string) SqlInterface {
 	case "mysql":
 		return MysqlModel{Name: m.Name, Model: *m}
 	case "postgres":
+		if schema == "" {
+			schema = "public"
+		}
 		name := fmt.Sprintf("%s.%s", schema, m.Name)
 		return PostgresModel{Name: name, Model: *m}
 	default:
