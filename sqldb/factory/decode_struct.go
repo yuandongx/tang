@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // 解码struct
@@ -18,6 +19,17 @@ func getValue(value reflect.Value) any {
 		return value.Float()
 	case reflect.Int, reflect.Int32, reflect.Int8, reflect.Int16, reflect.Int64:
 		return value.Int()
+	case reflect.Struct:
+		switch value.Type().Name() {
+		case "Time":
+			if t, ok := value.Interface().(time.Time); ok {
+				return t.Format(time.RFC3339)
+			} else {
+				return time.Time{}.Format(time.RFC3339)
+			}
+		default:
+			return value
+		}
 	default:
 		return value
 	}

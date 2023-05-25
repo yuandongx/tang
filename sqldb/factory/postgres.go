@@ -17,7 +17,9 @@ func (m PostgresModel) Create() (string, []any) {
 		s := lower(f.Key)
 		if _type, ok := f.Options["type"]; ok {
 			s = s + " " + _type
+			fmt.Println(s)
 		} else {
+			fmt.Println(s, f.Type)
 			s = s + " " + PgType(f.Type)
 		}
 

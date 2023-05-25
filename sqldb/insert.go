@@ -9,6 +9,7 @@ import (
 func (s *Session) Save(object any) (int64, error) {
 	model := factory.Parse(object, s._type, s._schema)
 	_sql, value := model.Add()
+	log.Debug(_sql, value)
 	if _, err := s.Exec(_sql, value...); err == nil {
 		return 1, nil
 	} else {
