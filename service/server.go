@@ -1,7 +1,7 @@
 package service
 
 import (
-	"tang/service/handlers"
+	handlers "tang/service/view"
 	"tang/sqldb"
 
 	"github.com/gin-gonic/gin"
