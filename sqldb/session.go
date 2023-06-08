@@ -14,10 +14,11 @@ const (
 )
 
 type Session struct {
-	db      *sql.DB
-	_schema string
-	_type   string // mysql/postgresql/sqlite
-	status  int
+	db         *sql.DB
+	_schema    string
+	_type      string // mysql/postgresql/sqlite
+	status     int
+	name_space string // db seesion name
 }
 
 func CreateMySqlSession(dataSourceName string) *Session {

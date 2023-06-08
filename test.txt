@@ -1,0 +1,115 @@
+1、mysql 的查看表的命令是
+答： show tables
+
+2、 grep 忽略大小写的参数是什么
+答： -i 
+
+3、代码静态检查的工具是
+答：sonar
+
+4、可以对代码异常异常运行实时监控的是
+答： Sentry
+
+5、 设置ysocr-core服务在一台机器的两张卡上启动4个进程需要修改哪些文件及参数 
+答： A 需要修改card_serve_private.properties文件
+     B 需要修改document_serve_private.properties文件
+     C default_workers_per_model=4
+     D number_of_gpu=2
+先择 ACD
+
+6、Elasticsearch正确的启动命令是什么？
+答：./bin/elasticsearch     ./bin/elasticsearch -d
+
+7、图谱平台支持哪些结构化数据源？
+答： A excel C  mysql D oracle
+
+8、以下哪些服务表格解析业务需要部署 
+A pdf2txt
+B bert_server
+C table_parser
+D ribbitmq
+答： ACD
+
+9、 elasticsearch 集群（3台）部署中以下哪些说法是错误的？
+A es中集群cluster.name 和node.name 需要统一
+B es对应的data目录下的node必须为空
+C es集群挂了两台 ，上报和搜索服务正常
+D es集群间通信端口默认通过9200连接
+答：ABCD
+
+10、渊海知识图谱包含哪几种知识图谱类型？
+A 网状图
+B 时序图
+C 有模式图
+D 无模式图
+答： AB
+
+11、以下关于TF-IDF描述正确的有哪些？
+A 某词条的IDF越大，说明该词条的类别区分能力越好
+B 某词条的IDF越小，说明该词条的类别区分能力越好
+C 包含某词条的文档越少，其IDF越小
+D 包含某词条的文档越少，其IDF越大
+答： AD
+
+12、以下哪些服务文档抽取业务需要部署
+A business_layer
+B bert_server
+C review
+D document_process
+答： ABD
+
+13、下面哪些算法最好使用GPU服务器
+A Bert
+B 规则抽取
+C OCR
+D CRF
+答：AC 
+
+14、哪些NPL技术属于字词级别的分析
+A 分词
+B 命名实体识别
+C 词性分析
+D 摘要生成
+答： ABC
+
+15、查看CPU硬件信息的命令有
+A lscpu
+B top
+C cat /proc/cpuinfo
+D free
+答： AC
+
+16、docker 相比虚拟机的优势有
+A 更轻量
+B 编排更简单
+C 能支持国产操作系统
+D 更安全
+答： AB
+
+17、以下哪些属于季度奖项
+A 达观之星
+B 最佳成长
+C 最佳员工
+D 最佳技术
+E 最佳讲师
+F 最佳服务
+答： BDF 
+
+18、以下婚假天数正确的有哪些？
+A 上海7天
+B  北京7天
+C 成都3天
+D 深圳3天
+答 CD
+
+
+19、以下哪选项是正确的 
+A 公司每个月15号发放工资
+B 公司每年有两次升职加薪的机会
+C 法定节假日加班三倍工资
+D 部门每个季度可以独立团建
+E 公司为优秀员工发方放期权
+答： ABCE 
+
+20、渊海知识图谱使用到了哪种图数据库
+答： arrango
