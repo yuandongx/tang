@@ -1,9 +1,9 @@
-package handlers
+package view
 
 import (
 	"tang/sqldb"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 )
 
 var db *sqldb.Session
@@ -15,17 +15,19 @@ const (
 	PATCH
 )
 
-type GContext = gin.Context
-type HandlerFunc = gin.HandlerFunc
-
+type EContext = echo.Context
+type Echo = echo.Echo
+type Function = echo.HandlerFunc
 type Handler struct {
-	Path   string
-	Method int
-	HandlerFunc
+	Htype int
+	Function
+	Path string
 }
 
-func LoadHandlers(sqldb *sqldb.Session) []Handler {
-	db = sqldb
-	handlers := []Handler{}
-	return handlers
+func LoadHandlers() (handlers []Handler) {
+	return
+}
+
+func New() *Echo {
+	return echo.New()
 }

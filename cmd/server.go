@@ -4,5 +4,5 @@ import "tang/service"
 
 func RunServer() {
 	app := service.LoadApp(nil)
-	app.Run()
+	app.Start(":8080")
 }
