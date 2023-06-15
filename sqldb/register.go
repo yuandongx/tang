@@ -29,9 +29,7 @@ func (s *Session) Register(object any) {
 	model := factory.Parse(object, s._type, s._schema)
 	qurey := fmt.Sprintf("SELECT * %s WHERE name=%s;", s.GetRegisterName(), model.GetName())
 	data, err := s.Query(qurey)
-	fmt.Println(111111111, data)
-	fmt.Println(err)
-	if len(data) == 0 {
+	if len(data) == 0 && err == nil {
 		sqlstring, _ := model.Create()
 		s.Exec(fmt.Sprintf("INSERT INTO %s(name, origin_name, create_sql, update_time)VALUES($1,$2,$3, $4)",
 			s.GetRegisterName()),
@@ -40,4 +38,5 @@ func (s *Session) Register(object any) {
 			sqlstring,
 			"NOW()")
 	}
+	log.Info("Has add table: " + model.GetName() + " to db.")
 }
