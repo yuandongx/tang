@@ -2,6 +2,7 @@ package sqldb
 
 import (
 	"database/sql"
+	"fmt"
 
 	// _ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
@@ -19,6 +20,7 @@ type Session struct {
 	_type      string // mysql/postgresql/sqlite
 	status     int
 	name_space string // db seesion name
+
 }
 
 func CreateMySqlSession(dataSourceName string) *Session {
@@ -55,4 +57,8 @@ func (s *Session) Ping() int {
 		log.Error("sql连接败：", err)
 		return PingError
 	}
+}
+
+func (s *Session) GetRegisterName() string {
+	return fmt.Sprintf("%s_register", s.name_space)
 }

@@ -15,4 +15,5 @@ type SqlInterface interface {
 	GetMore(map[string]any) (string, []any)
 
 	GetName() string
+	GetOriginName() string
 }

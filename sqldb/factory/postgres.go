@@ -151,3 +151,6 @@ func (m PostgresModel) GetMore(filters map[string]any) (string, []any) {
 func (m PostgresModel) GetName() string {
 	return m.Name
 }
+func (m PostgresModel) GetOriginName() string {
+	return m.Name
+}

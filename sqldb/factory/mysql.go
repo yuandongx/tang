@@ -147,6 +147,9 @@ func (m MysqlModel) GetMore(filters map[string]any) (string, []any) {
 func (m MysqlModel) GetName() string {
 	return m.Name
 }
+func (m MysqlModel) GetOriginName() string {
+	return m.Name
+}
 
 func selectId(name string, tag string) string {
 	return fmt.Sprintf("SELECT * FROM %s WHERE %s", name, tag)
