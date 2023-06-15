@@ -35,7 +35,7 @@ func CreateMySqlSession(dataSourceName string) *Session {
 
 func CreatePostgresSession(dataSourceName string) *Session {
 	db, err := sql.Open("postgres", dataSourceName)
-	s := &Session{_type: "postgres", db: db}
+	s := &Session{_type: "postgres", db: db, name_space: "tang"}
 	if err != nil {
 		s.status = FAILURE
 		log.Fatal("postgre连接败：", err)

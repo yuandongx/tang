@@ -1,6 +1,7 @@
 package sqldb
 
 import (
+	"fmt"
 	"testing"
 	"time"
 )
@@ -32,4 +33,9 @@ func TestSession_CreatePostgresSession(t *testing.T) {
 	} else {
 		t.Fatal("Test Failed!")
 	}
+	s.Init()
+	s.Register(tt)
+	data, err := s.Query(fmt.Sprintf("select * from %s_register;", s.name_space))
+	t.Log(data)
+	t.Log(err)
 }
