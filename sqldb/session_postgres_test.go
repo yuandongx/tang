@@ -36,6 +36,6 @@ func TestSession_CreatePostgresSession(t *testing.T) {
 	s.Init()
 	s.Register(tt)
 	data, err := s.Query(fmt.Sprintf("select * from %s_register;", s.name_space))
-	t.Log("获取到的数据是： ", data)
+	t.Log("获取到的数据是：", data)
 	t.Log(err)
 }
