@@ -9,10 +9,17 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /home/xuyuandong/workspace/postgres/data:/var/lib/postgresql/data
+      - /home/ubuntu/workspace/postgres/data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 9090:8080
+    
+  golang:
+    image: golang:alpine3.18
+    volumes:
+      - /home/ubuntu/workspace:/var/workspace
+    command: top -b
+    
